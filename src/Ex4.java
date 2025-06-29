@@ -1,11 +1,10 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ex4 {
 
     public static void bubbleSortParcial(int[] arr, int n) {
         for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
+            for (int j = 0; j < n - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
@@ -71,13 +70,21 @@ public class Ex4 {
             }
         }
 
-        while (i < n1) {
+        while (i < n1)
             arr[k++] = L[i++];
-        }
-
-        while (j < n2) {
+        while (j < n2)
             arr[k++] = R[j++];
+
+    }
+
+    public static void exibirVetor(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1)
+                System.out.print(", ");
         }
+        System.out.println("]");
     }
 
     public static void main(String[] args) {
@@ -99,6 +106,7 @@ public class Ex4 {
         if (N > tamanho || N < 1) {
             System.out.println("Valor inválido para N.");
             sc.close();
+            return;
         }
 
         int[] bubbleArr = vetor.clone();
@@ -107,16 +115,20 @@ public class Ex4 {
         int[] mergeArr = vetor.clone();
 
         bubbleSortParcial(bubbleArr, N);
-        System.out.println("Bubble Sort Parcial: " + Arrays.toString(bubbleArr));
+        System.out.print("Bubble Sort Parcial: ");
+        exibirVetor(bubbleArr);
 
         selectionSortParcial(selectionArr, N);
-        System.out.println("Selection Sort Parcial: " + Arrays.toString(selectionArr));
+        System.out.print("Selection Sort Parcial: ");
+        exibirVetor(selectionArr);
 
         insertionSortParcial(insertionArr, N);
-        System.out.println("Insertion Sort Parcial: " + Arrays.toString(insertionArr));
+        System.out.print("Insertion Sort Parcial: ");
+        exibirVetor(insertionArr);
 
         mergeSortParcial(mergeArr, 0, N - 1);
-        System.out.println("Merge Sort Parcial: " + Arrays.toString(mergeArr));
+        System.out.print("Merge Sort Parcial: ");
+        exibirVetor(mergeArr);
 
         sc.close();
     }
