@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Ex3 {
 
@@ -66,37 +66,41 @@ public class Ex3 {
         System.arraycopy(arr, esquerda, L, 0, n1);
         System.arraycopy(arr, meio + 1, R, 0, n2);
 
-        int i = 0, j = 0;
-        int k = esquerda;
+        int i = 0, j = 0, k = esquerda;
+
         while (i < n1 && j < n2) {
             if (L[i].compareTo(R[j]) <= 0) {
-                arr[k] = L[i];
-                i++;
+                arr[k++] = L[i++];
             } else {
-                arr[k] = R[j];
-                j++;
+                arr[k++] = R[j++];
             }
-            k++;
         }
 
         while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
+            arr[k++] = L[i++];
         }
 
         while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
+            arr[k++] = R[j++];
         }
+    }
+
+    public static void exibirVetor(String[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Digite a quantidade de strings: ");
-        int n = sc.nextInt();
+        int n = Integer.parseInt(sc.nextLine());
 
         String[] strings = new String[n];
 
@@ -105,23 +109,29 @@ public class Ex3 {
             strings[i] = sc.nextLine();
         }
 
-        System.out.println("\nVetor de Strings Original: " + Arrays.toString(strings));
+        System.out.print("\nVetor de Strings Original: ");
+        exibirVetor(strings);
 
         String[] bubbleStr = strings.clone();
         bubbleSort(bubbleStr);
-        System.out.println("Bubble Sort Strings: " + Arrays.toString(bubbleStr));
+        System.out.print("Bubble Sort Strings: ");
+        exibirVetor(bubbleStr);
 
         String[] selectionStr = strings.clone();
         selectionSort(selectionStr);
-        System.out.println("Selection Sort Strings: " + Arrays.toString(selectionStr));
+        System.out.print("Selection Sort Strings: ");
+        exibirVetor(selectionStr);
 
         String[] insertionStr = strings.clone();
         insertionSort(insertionStr);
-        System.out.println("Insertion Sort Strings: " + Arrays.toString(insertionStr));
+        System.out.print("Insertion Sort Strings: ");
+        exibirVetor(insertionStr);
 
         String[] mergeStr = strings.clone();
         mergeSort(mergeStr);
-        System.out.println("Merge Sort Strings: " + Arrays.toString(mergeStr));
+        System.out.print("Merge Sort Strings: ");
+        exibirVetor(mergeStr);
+
         sc.close();
     }
 }
