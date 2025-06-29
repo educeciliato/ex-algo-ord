@@ -10,6 +10,8 @@ public class Ex7 {
                     arr[j + 1] = temp;
                 }
             }
+            System.out.print("Passo " + (i + 1) + ": ");
+            exibirVetor(arr);
         }
     }
 
@@ -24,6 +26,8 @@ public class Ex7 {
             int temp = arr[maxIndex];
             arr[maxIndex] = arr[i];
             arr[i] = temp;
+            System.out.print("Passo " + (i + 1) + ": ");
+            exibirVetor(arr);
         }
     }
 
@@ -36,6 +40,8 @@ public class Ex7 {
                 j--;
             }
             arr[j + 1] = key;
+            System.out.print("Passo " + i + ": ");
+            exibirVetor(arr);
         }
     }
 
@@ -59,6 +65,16 @@ public class Ex7 {
         }
     }
 
+    public static void exibirVetor(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1)
+                System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -71,30 +87,35 @@ public class Ex7 {
             pontuacoes[i] = scanner.nextInt();
         }
 
-        System.out.println("Pontuações Originais: " + Arrays.toString(pontuacoes));
+        System.out.print("Pontuações Originais: ");
+        exibirVetor(pontuacoes);
 
         int[] bubblePontuacoes = pontuacoes.clone();
-        bubbleSort(bubblePontuacoes);
         System.out.println("\nUsando Bubble Sort:");
-        System.out.println("Pontuações Ordenadas: " + Arrays.toString(bubblePontuacoes));
+        bubbleSort(bubblePontuacoes);
+        System.out.print("Pontuações Ordenadas: ");
+        exibirVetor(bubblePontuacoes);
         System.out.println("Pontuação Mais Alta: " + bubblePontuacoes[0]);
 
         int[] selectionPontuacoes = pontuacoes.clone();
-        selectionSort(selectionPontuacoes);
         System.out.println("\nUsando Selection Sort:");
-        System.out.println("Pontuações Ordenadas: " + Arrays.toString(selectionPontuacoes));
+        selectionSort(selectionPontuacoes);
+        System.out.print("Pontuações Ordenadas: ");
+        exibirVetor(selectionPontuacoes);
         System.out.println("Pontuação Mais Alta: " + selectionPontuacoes[0]);
 
         int[] insertionPontuacoes = pontuacoes.clone();
-        insertionSort(insertionPontuacoes);
         System.out.println("\nUsando Insertion Sort:");
-        System.out.println("Pontuações Ordenadas: " + Arrays.toString(insertionPontuacoes));
+        insertionSort(insertionPontuacoes);
+        System.out.print("Pontuações Ordenadas: ");
+        exibirVetor(insertionPontuacoes);
         System.out.println("Pontuação Mais Alta: " + insertionPontuacoes[0]);
 
         int[] mergePontuacoes = pontuacoes.clone();
         mergeSort(mergePontuacoes);
         System.out.println("\nUsando Merge Sort:");
-        System.out.println("Pontuações Ordenadas: " + Arrays.toString(mergePontuacoes));
+        System.out.print("Pontuações Ordenadas: ");
+        exibirVetor(mergePontuacoes);
         System.out.println("Pontuação Mais Alta: " + mergePontuacoes[0]);
 
         scanner.close();
